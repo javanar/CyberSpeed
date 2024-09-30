@@ -53,7 +53,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>org.tuncer.ScratchGame</mainClass>
+              <mainClass>org.tuncer.scratch.Main</mainClass>
             </manifest>
           </archive>
           <descriptorRefs>
@@ -71,7 +71,7 @@
             <manifest>
               <addClasspath>true</addClasspath>
               <classpathPrefix>lib/</classpathPrefix>
-              <mainClass>org.tuncer.ScratchGame</mainClass>
+              <mainClass>org.tuncer.scratch.Main</mainClass>
             </manifest>
           </archive>
         </configuration>
