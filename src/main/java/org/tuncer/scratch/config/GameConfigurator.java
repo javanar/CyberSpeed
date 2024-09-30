@@ -18,9 +18,10 @@ public class GameConfigurator {
     public GameConfig getGameConfig() throws IOException, URISyntaxException {
         ObjectMapper objectMapper = new ObjectMapper();
 
-//        In order to get the file from resources directory
+//        Get the file from resources directory
 //        ClassLoader classLoader = getClass().getClassLoader();
 //        File configFile = new File(classLoader.getResource(config).getFile());
+
 //        Get the file from current directory
         File jarFile = new File(Main.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath());
         String inputFilePath = jarFile.getParent() + File.separator + config;

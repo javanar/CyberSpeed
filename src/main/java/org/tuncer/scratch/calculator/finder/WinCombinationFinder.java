@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CombinationFinder {
+public class WinCombinationFinder {
 
     private final SameSymbolsFinder sameSymbolsFinder;
     private final HorizontalSymbolsFinder horizontalSymbolsFinder;
@@ -17,7 +17,7 @@ public class CombinationFinder {
     private final DiagonalLTRSymbolsFinder diagonalLTRSymbolsFinder;
     private final DiagonalRTLSymbolsFinder diagonalRTLSymbolsFinder;
 
-    public CombinationFinder(final Symbol[][] matrix, final GameConfig gameConfig) {
+    public WinCombinationFinder(final Symbol[][] matrix, final GameConfig gameConfig) {
         this.sameSymbolsFinder = new SameSymbolsFinder(matrix, gameConfig);
         this.horizontalSymbolsFinder = new HorizontalSymbolsFinder(matrix, gameConfig);
         this.verticalSymbolsFinder = new VerticalSymbolsFinder(matrix, gameConfig);
