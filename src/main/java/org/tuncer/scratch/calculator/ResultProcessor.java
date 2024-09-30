@@ -28,16 +28,14 @@ public class ResultProcessor {
 
     public Output process() {
 
-        CombinationFinder combinationFinder = new CombinationFinder(symbolMatrix, gameConfig);
-        Map<Symbol, List<WinCombination>> winningCombinations = combinationFinder.getWinningCombinations();
+        Map<Symbol, List<WinCombination>> winningCombinations =
+                new CombinationFinder(symbolMatrix, gameConfig).getWinningCombinations();
 
-        BonusSymbolFinder bonusSymbolFinder = new BonusSymbolFinder(symbolMatrix);
-        BonusSymbol[] bonusSymbols = bonusSymbolFinder.getBonusSymbols();
+        BonusSymbol[] bonusSymbols = new BonusSymbolFinder(symbolMatrix).getBonusSymbols();
 
-        RewardCalculator rewardCalculator = new RewardCalculator(winningCombinations, bonusSymbols, bettingAmount);
-        double reward = rewardCalculator.calculate();
+        double reward = new RewardCalculator(winningCombinations, bonusSymbols, bettingAmount).calculate();
 
-        String[] oneDimensional = Arrays.stream(symbolMatrix)
+        String[] symbolExplanations = Arrays.stream(symbolMatrix)
                 .flatMap(Arrays::stream)
                 .map(Symbol::getExplanation)
                 .toArray(String[]::new);
@@ -45,7 +43,7 @@ public class ResultProcessor {
         String[][] stringMatrix = new String[symbolMatrix.length][symbolMatrix[0].length];
 
         for (int i = 0; i < symbolMatrix.length; i++) {
-            System.arraycopy(oneDimensional, i * symbolMatrix.length, stringMatrix[i], 0, symbolMatrix[0].length);
+            System.arraycopy(symbolExplanations, i * symbolMatrix.length, stringMatrix[i], 0, symbolMatrix[0].length);
         }
 
         Output output = new Output();

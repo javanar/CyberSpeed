@@ -17,21 +17,9 @@ public class Game {
     }
 
     public Output play(double bettingAmount) throws IOException {
-        Symbol[][] symbolMatrix = createScratch(gameConfig);
-        return processResult(gameConfig, symbolMatrix, bettingAmount);
+        Symbol[][] symbolMatrix =  new MatrixCreator(gameConfig).create();
+        return  new ResultProcessor(symbolMatrix, bettingAmount, gameConfig).process();
     }
-
-    private Symbol[][] createScratch(GameConfig gameConfig) throws IOException {
-        final MatrixCreator matrixCreator = new MatrixCreator(gameConfig);
-        return matrixCreator.create();
-    }
-
-    private Output processResult(GameConfig gameConfig, Symbol[][] symbolMatrix, double bettingAmount) {
-        ResultProcessor resultProcessor = new ResultProcessor(symbolMatrix, bettingAmount, gameConfig);
-        return resultProcessor.process();
-    }
-
-
 
 
 }
